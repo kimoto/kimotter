@@ -10,9 +10,9 @@ Require: Ruby 1.9, nokogiri, mechanize
 
 == Example
  > kimotter "EventSource知らんかった、普通に便利そう"
- > 嘘偽りなく自分がキモトであると誓います[y/N] y
- > hi kimoto. try to tweet your cool message
- > done!
+ 嘘偽りなく自分がキモトであると誓います[y/N] y
+ hi kimoto. try to tweet your cool message
+ done!
 
 == Copyright
 Copyright (c) 2012 kimoto. See LICENSE for details.
