@@ -14,6 +14,9 @@ Require: Ruby 1.9, nokogiri, mechanize
  hi kimoto. try to tweet your cool message
  done!
 
+== Donate
+Hey guys, Please give me your money. thank you 
+
 == Copyright
 Copyright (c) 2012 kimoto. See LICENSE for details.
 
