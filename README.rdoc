@@ -1,8 +1,14 @@
 = kimotter
-Twitter client
+This module is relly useful twitter client
  Usage: kimotter [options] tweet_message
      -d, --debug                      Debug Mode
      -f, --force                      Force execute, ignore api limit
+
+== Example
+ > kimotter "EventSource知らんかった、普通に便利そう"
+ > 嘘偽りなく自分がキモトであると誓います[y/N] y
+ > hi kimoto. try to tweet your cool message
+ > done!
 
 == Copyright
 Copyright (c) 2012 kimoto. See LICENSE for details.
