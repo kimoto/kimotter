@@ -4,6 +4,10 @@ This module is relly useful twitter client
      -d, --debug                      Debug Mode
      -f, --force                      Force execute, ignore api limit
 
+== Install
+Require: Ruby 1.9, nokogiri, mechanize
+ gem install kimotter
+
 == Example
  > kimotter "EventSource知らんかった、普通に便利そう"
  > 嘘偽りなく自分がキモトであると誓います[y/N] y
