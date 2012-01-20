@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+$LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), "../lib"))
+require 'kimotter'
+require 'logger'
+
+if $0 == __FILE__
+  require 'optparse'
+  options = {}
+  OptionParser.new{ |opts|
+    opts.banner = "Usage: #{$0} [options] tweet_message"
+    opts.on("-d", "--debug", "Debug Mode"){ |v|
+      options[:debug_mode] = true
+    }
+    opts.on("-f", "--force", "Force execute, ignore api limit"){ |v|
+      options[:force_execute] = true
+    }
+  }.parse!
+
+  message = ARGV.shift
+  raise "argument error" unless message
+
+  logger = options[:debug_mode] ? Logger.new(STDERR) : Logger.new(nil)
+  kimotter = Kimotter.new(:logger => logger)
+
+  kimotter.fetch_api_limit
+  if !options[:force_execute] and kimotter.api_limit?
+    puts "u cant use this api now(api limit)"
+    puts "try again later or retry with --force option (ignore API limit)"
+    exit(1)
+  end
+
+  print kimotter.confirm_msg + "[y/N] "
+  if user_input_line = $stdin.gets
+    if user_input_line =~ /^(yes|y)$/i
+      puts "hi kimoto. try to tweet your message"
+      puts message
+      kimotter.tweet(message)
+      puts "done"
+      exit(0)
+    else
+      puts "u guys so fucking retard"
+      exit(3)
+    end
+  else
+    puts "omg?"
+    exit(2)
+  end
+end
+
