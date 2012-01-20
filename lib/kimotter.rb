@@ -73,10 +73,15 @@ class Kimotter
     end
   end
 
+  ## please overwrite this method if you need it
+  def filter(message)
+    message
+  end
+
   def tweet(message)
     @logger.info "try to tweet: #{message.inspect}"
     @agent.page.form_with(:action => '/twitter/'){ |form|
-      form.field_with(:name => 'status').value = message
+      form.field_with(:name => 'status').value = filter(message)
       form.checkbox_with(:name => 'is_kimoto').check
       form.click_button
     }
