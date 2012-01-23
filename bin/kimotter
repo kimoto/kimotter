@@ -3,10 +3,11 @@
 require 'kimotter'
 require 'logger'
 require 'optparse'
+require 'tempfile'
 
 options = {}
 parser = OptionParser.new{ |opts|
-  opts.banner = "Usage: #{File.basename($0)} [options] tweet_message"
+  opts.banner = "Usage: #{File.basename($0)} [options] [tweet_message]"
   opts.on("-d", "--debug", "Debug Mode"){ |v|
     options[:debug_mode] = true
   }
@@ -16,11 +17,19 @@ parser = OptionParser.new{ |opts|
 }
 parser.parse!
 
-## validate commandline arguments
 message = ARGV.shift
 unless message
-  parser.help.display
-  exit(1)
+  file = Tempfile.new('foo')
+  file.close
+
+  unless system(ENV['EDITOR'], file.path)
+    raise "system command aborted"
+  end
+  message = File.read(file.path).chomp.gsub(/\n/, " ")
+end
+
+if message.empty?
+  raise "please input message"
 end
 
 logger = options[:debug_mode] ? Logger.new(STDERR) : Logger.new(nil)
