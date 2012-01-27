@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{kimotter}
-  s.version = "0.0.8"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["kimoto"]
@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.default_executable = %q{kimotter}
   s.description = %q{kiomtter}
   s.email = %q{peerler@gmail.com}
-  s.executables = ["kimotter"]
+  s.executables = ["kimotter", "koiketter"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
@@ -25,6 +25,8 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "bin/kimotter",
+     "bin/koiketter",
      "lib/kimotter.rb",
      "test/kimotter_test.rb",
      "test/test_helper.rb"
