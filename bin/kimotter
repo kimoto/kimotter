@@ -14,6 +14,9 @@ parser = OptionParser.new{ |opts|
   opts.on("-f", "--force", "Force execute, ignore api limit"){ |v|
     options[:force_execute] = true
   }
+  opts.on("-a", "--api=URL", "API Endpoint URL"){ |url|
+    options[:api_endpoint] = url
+  }
 }
 parser.parse!
 
@@ -33,6 +36,7 @@ if message.empty?
 end
 
 logger = options[:debug_mode] ? Logger.new(STDERR) : Logger.new(nil)
+api = options[:api_endpoint] || "http://api.ma.la/twitter/"
 kimotter = Kimotter.new(:logger => logger)
 
 kimotter.fetch_api_limit
