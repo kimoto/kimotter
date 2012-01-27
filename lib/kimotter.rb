@@ -92,3 +92,4 @@ class Kimotter
     (@api_limit.used >= @api_limit.limit)
   end
 end
+
