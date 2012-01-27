@@ -37,7 +37,7 @@ end
 
 logger = options[:debug_mode] ? Logger.new(STDERR) : Logger.new(nil)
 api = options[:api_endpoint] || "http://api.ma.la/twitter/"
-kimotter = Kimotter.new(:logger => logger)
+kimotter = Kimotter.new(:api => api, :logger => logger)
 
 kimotter.fetch_api_limit
 if !options[:force_execute] and kimotter.api_limit?
